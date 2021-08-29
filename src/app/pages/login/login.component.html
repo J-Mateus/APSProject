@@ -1,3 +1,19 @@
-<p>
-  login works!
-</p>
+<div class="login__header"></div>
+
+<div class="login__logo-box">
+  
+</div>
+
+<form class="login__form" [formGroup]="formLogin">
+  <ion-item class="login__input-box">
+    <ion-label position="floating">Usuário:</ion-label>
+    <ion-input formControlName="user"></ion-input>
+  </ion-item>
+
+  <ion-item class="login__input-box">
+    <ion-label position="floating">Senha:</ion-label>
+    <ion-input type="password"  formControlName="password"></ion-input>
+  </ion-item>
+
+  <ion-button (click)="submit()" class="login__btn" color="primary">Entrar</ion-button>
+</form>

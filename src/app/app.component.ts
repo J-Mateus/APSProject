@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -17,25 +17,16 @@ export class AppComponent implements OnInit  {
 
   public exitBtn = { title: 'Sair', url: '/login', icon: 'exit' }
 
-  public isLogin: boolean;
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private menuCtrl: MenuController) { }
 
-  constructor(private router: Router) {
-    this.loginPage().subscribe(data => {
-      this.isLogin = data;
+  ngOnInit(): void { 
+    this.authService.loginPage().subscribe(data => {      
+        this.menuCtrl.enable(data, 'main-menu');
     })
   }
-
-
-  ngOnInit(): void {  }
-
-  loginPage(): Observable<any> {
-    return this.router.events.pipe(
-        filter(e => e instanceof NavigationEnd),
-        map((route: NavigationEnd) => {         
-          return route.url === '/login' || route.urlAfterRedirects === '/login' ? false : true;  
-        })
-    );
-  };
 
   exit() {
     this.router.navigate(['/login'])
