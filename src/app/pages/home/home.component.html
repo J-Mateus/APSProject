@@ -8,14 +8,38 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Home</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong class="capitalize">Home</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  
+
+  <div class="description">
+    <h1>Denúncias</h1>
+
+    <p>Aqui você pode acompanhar as suas denúncias.</p>
+    <p>Clique nos botões indicados caso queira exluí-las ou editá-las.</p>
+    
   </div>
+
+  <div class="list">
+    <!-- <span class="list__empty">Você ainda não cadastrou nenhuma denúncia, vá para aba de cadastro para adicioná-las</span> -->
+
+    <ion-card class="card">    
+      <ion-card-content>
+        <p><strong>Logradouro:</strong> Av. dos Autonomistas</p>
+        <p><strong>CEP:</strong> 32548-884</p>
+        <p><strong>Bairro:</strong> Centro</p>
+        <p><strong>Cidade:</strong> Osasco</p>
+        <p><strong>UF:</strong> SP</p>
+        <p><strong>Nome:</strong> Pessoa</p>
+        <p><strong>Tel:</strong> 113485-8842</p>
+        
+        <div class="btn-box">
+          <ion-button (click)="apagarDenuncia()" color="danger">Exluir</ion-button>
+          <ion-button color="warning">Editar</ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    
+  </div>
+
+
 </ion-content>
