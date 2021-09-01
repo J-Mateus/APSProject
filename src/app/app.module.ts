@@ -12,13 +12,18 @@ import { DenunciarComponent } from './pages/denunciar/denunciar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { TelMaskPipe } from './pipes/tel-mask.pipe';
+import { CepMaskPipe } from './pipes/cep-mask.pipe'
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
     SobreComponent,
-    DenunciarComponent
+    DenunciarComponent,
+    TelMaskPipe,
+    CepMaskPipe
   ],
   entryComponents: [],
   imports: [
@@ -28,7 +33,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    TelMaskPipe,
+    CepMaskPipe
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

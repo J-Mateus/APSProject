@@ -6,3 +6,96 @@
     <ion-title>Denunciar</ion-title>
   </ion-toolbar>
 </ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="description">
+    <h1>Cadastrar Denuncia</h1>
+    <p>Preencha todos* os campos corretamente com o endereço do local onde é havendo a ocorrência.</p>
+  </div>
+
+  <form class="form" [formGroup]="formDenuncia">
+    <ion-item class="form__item">
+      <ion-label position="stacked">Nome:</ion-label>
+      <ion-input formControlName="nome" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item class="form__item">
+      <ion-label position="stacked">Tel:</ion-label>
+      <ion-input 
+        (ionChange)="updateWithTelMask($event)"
+        type="text"
+        formControlName="tel"
+        maxlength="15"
+        minlength="14">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="form__item">
+      <ion-label position="stacked">Logradouro</ion-label>
+      <ion-input formControlName="logradouro" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item class="form__item">
+      <ion-label position="stacked">CEP:</ion-label>
+      <ion-input 
+        (ionChange)="updateWithCepMask($event)"
+        formControlName="cep"
+        type="text"
+        maxlength="9"
+        minlength="9"
+        ></ion-input>
+    </ion-item>
+
+    <ion-item class="form__item">
+      <ion-label position="stacked">Bairro:</ion-label>
+      <ion-input formControlName="bairro" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item class="form__item">
+      <ion-label position="stacked">Cidade:</ion-label>
+      <ion-input formControlName="cidade" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item class="form__item">
+      <ion-label>UF:</ion-label>
+      <ion-select formControlName="uf" interface="action-sheet">
+        <ion-select-option value="AC">Acre</ion-select-option>
+        <ion-select-option value="AL">Alagoas</ion-select-option>
+        <ion-select-option value="AP">Amapá</ion-select-option>
+        <ion-select-option value="AM">Amazonas</ion-select-option>
+        <ion-select-option value="BA">Bahia</ion-select-option>
+        <ion-select-option value="CE">Ceará</ion-select-option>
+        <ion-select-option value="DF">Distrito Federal</ion-select-option>
+        <ion-select-option value="ES">Espirito Santo</ion-select-option>
+        <ion-select-option value="GO">Goiás</ion-select-option>
+        <ion-select-option value="MA">Maranhão</ion-select-option>
+        <ion-select-option value="MS">Mato Grosso do Sul</ion-select-option>
+        <ion-select-option value="MT">Mato Grosso</ion-select-option>
+        <ion-select-option value="MG">Minas Gerais</ion-select-option>
+        <ion-select-option value="PA">Pará</ion-select-option>
+        <ion-select-option value="PB">Paraíba</ion-select-option>
+        <ion-select-option value="PR">Paraná</ion-select-option>
+        <ion-select-option value="PE">Pernambuco</ion-select-option>
+        <ion-select-option value="PI">Piauí</ion-select-option>
+        <ion-select-option value="RJ">Rio de Janeiro</ion-select-option>
+        <ion-select-option value="RN">Rio Grande do Norte</ion-select-option>
+        <ion-select-option value="RS">Rio Grande do Sul</ion-select-option>
+        <ion-select-option value="RO">Rondônia</ion-select-option>
+        <ion-select-option value="RR">Roraima</ion-select-option>
+        <ion-select-option value="SC">Santa Catarina</ion-select-option>
+        <ion-select-option value="SP">São Paulo</ion-select-option>
+        <ion-select-option value="SE">Sergipe</ion-select-option>
+        <ion-select-option value="TO">Tocantins</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Descrição:</ion-label>
+      <ion-textarea formControlName="descricao" placeholder="Descreva os detalhes da sua denúncia."></ion-textarea>
+    </ion-item>
+  </form>
+
+</ion-content>
+
+
