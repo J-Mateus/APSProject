@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { DenunciarComponent } from './pages/denunciar/denunciar.component';
+import { EditarComponent } from './pages/editar/editar.component';
 import { HomeComponent } from './pages/home/home.component';
 
 import { LoginComponent } from './pages/login/login.component';
@@ -27,7 +28,11 @@ const routes: Routes = [
   {
     path: 'denunciar',
     component: DenunciarComponent
-  } 
+  },
+  {
+    path: 'editar/:id',
+    component: EditarComponent
+  }
 ];
 
 @NgModule({

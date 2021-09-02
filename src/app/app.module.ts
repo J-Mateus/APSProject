@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { TelMaskPipe } from './pipes/tel-mask.pipe';
 import { CepMaskPipe } from './pipes/cep-mask.pipe'
+import { EditarComponent } from './pages/editar/editar.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CepMaskPipe } from './pipes/cep-mask.pipe'
     LoginComponent,
     SobreComponent,
     DenunciarComponent,
+    EditarComponent,
     TelMaskPipe,
     CepMaskPipe
   ],

@@ -22,24 +22,24 @@
   <div class="list">
     <!-- <span class="list__empty">Você ainda não cadastrou nenhuma denúncia, vá para aba de cadastro para adicioná-las</span> -->
 
-    <ion-card class="card">    
+    <ion-card class="card" *ngFor="let card of cards">    
       <ion-card-content>
-        <p><strong>Logradouro:</strong> Av. dos Autonomistas</p>
-        <p><strong>CEP:</strong> 32548-884</p>
-        <p><strong>Bairro:</strong> Centro</p>
-        <p><strong>Cidade:</strong> Osasco</p>
-        <p><strong>UF:</strong> SP</p>
-        <p><strong>Nome:</strong> Pessoa</p>
-        <p><strong>Tel:</strong> 113485-8842</p>
+        <p><strong>Nome:</strong> {{ card.nome }}</p>
+        <p><strong>Tel:</strong> {{ card.tel }}</p>
+        <p><strong>Logradouro:</strong> {{ card.logradouro }}</p>
+        <p><strong>Bairro:</strong> {{ card.bairro }}</p>
+        <p><strong>CEP:</strong> {{ card.cep }}</p>
+        <p><strong>Cidade:</strong> {{ card.cidade }}</p>
+        <p><strong>UF:</strong> {{ card.uf }}</p>
+        <p><strong>Descrição:</strong> {{ card.descricao }}</p>
         
         <div class="btn-box">
-          <ion-button (click)="apagarDenuncia()" color="danger">Exluir</ion-button>
-          <ion-button color="warning">Editar</ion-button>
+          <ion-button (click)="apagarDenuncia(card.id)" color="danger">Exluir</ion-button>
+          <ion-button routerLink="/editar/{{ card.id }}" color="warning">Editar</ion-button>
         </div>
       </ion-card-content>
     </ion-card>
     
   </div>
-
 
 </ion-content>
