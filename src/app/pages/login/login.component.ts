@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { Usuario } from 'src/app/models/usuario';
 import { LoginService } from 'src/app/services/login.service';
+import { LocalStorage } from 'src/app/utils/localStorage';
 
 
 @Component({
@@ -13,6 +15,7 @@ import { LoginService } from 'src/app/services/login.service';
 export class LoginComponent implements OnInit {
   
   formLogin: FormGroup;
+  localStorage = new LocalStorage();
 
   constructor(
     private fb: FormBuilder,
@@ -33,7 +36,11 @@ export class LoginComponent implements OnInit {
     if(this.formLogin.valid){
       
       this.loginService.login(this.formLogin.value).subscribe(data => {
-        console.log(data);
+
+        const user: Usuario = data;
+        
+        this.localStorage.setUsuario(user);
+
         this.router.navigate(['/home']);
         this.formLogin.reset();
       },

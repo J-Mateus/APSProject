@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { catchError } from "rxjs/operators";
+import { Usuario } from "../models/usuario";
 import { BaseService } from "./base.service";
 
 @Injectable({
@@ -12,8 +13,8 @@ export class LoginService extends BaseService {
 
     constructor(private http: HttpClient) { super(); }
 
-    login(cred): Observable<any> {
-        return  this.http.post(`${this.urlApi}usuarios/login`, cred, this.ObterHeaderJson())
+    login(cred): Observable<Usuario> {
+        return  this.http.post<Usuario>(`${this.urlApi}usuarios/login`, cred, this.ObterHeaderJson())
             .pipe(
                 catchError(err => {
                     throw err
