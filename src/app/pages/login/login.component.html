@@ -7,12 +7,12 @@
 <form class="login__form" [formGroup]="formLogin">
   <ion-item class="login__input-box">
     <ion-label position="floating">Usuário:</ion-label>
-    <ion-input formControlName="user"></ion-input>
+    <ion-input formControlName="email"></ion-input>
   </ion-item>
 
   <ion-item class="login__input-box">
     <ion-label position="floating">Senha:</ion-label>
-    <ion-input type="password"  formControlName="password"></ion-input>
+    <ion-input type="password"  formControlName="senha"></ion-input>
   </ion-item>
 
   <ion-button (click)="submit()" class="login__btn" color="primary">Entrar</ion-button>
