@@ -23,8 +23,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 
     this.formLogin = this.fb.group({
-      email: ['usuario', [Validators.required]],
-      senha: ['123456', Validators.required]
+      email: ['usuarioTeste@email.com', [Validators.required]],
+      senha: ['1234567', Validators.required]
     });
 
   }
@@ -34,21 +34,22 @@ export class LoginComponent implements OnInit {
       
       this.loginService.login(this.formLogin.value).subscribe(data => {
         console.log(data);
-        
-      })
-
-
-      this.router.navigate(['/home']);
-      this.formLogin.reset();
+        this.router.navigate(['/home']);
+        this.formLogin.reset();
+      },
+        err => {
+          err.status === 401 ? this.presentAlert("Usuário ou senha inválidos!!") : this.presentAlert(err.error.mensagem)
+        }
+      )     
     }else {
-      this.presentAlert();
+      this.presentAlert('Por favor, preencha os campos corretamente.');
     }   
   }
 
 
-  async presentAlert() {
+  async presentAlert(msg) {
     const alert = await this.alertController.create({
-      message: 'Usuário ou senha inválidos',
+      message: msg,
       buttons: ['OK']
     });
 
