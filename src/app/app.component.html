@@ -3,8 +3,12 @@
     <ion-menu contentId="main-content" type="overlay" menuId="main-menu">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>APP</ion-list-header>
-          <ion-note>Bem-Vindo!!</ion-note>
+          <ion-list-header>
+            <span class="logo__text">
+              <span class="logo__text logo__text--bold">City</span> Clean
+            </span>         
+          </ion-list-header>
+          <ion-note class="logo__note">Our name says it all</ion-note>
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
