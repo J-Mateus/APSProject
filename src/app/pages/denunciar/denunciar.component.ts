@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CepMaskPipe } from 'src/app/pipes/cep-mask.pipe';
 import { TelMaskPipe } from 'src/app/pipes/tel-mask.pipe';
 import { AlertController, ToastController } from '@ionic/angular';
+import { DenunciaService } from 'src/app/services/denuncia.service';
 
 @Component({
   selector: 'app-denunciar',
@@ -18,14 +19,15 @@ export class DenunciarComponent implements OnInit {
     private fb: FormBuilder,
     private cepPipe: CepMaskPipe,
     public alertController: AlertController,
-    public toastController: ToastController
+    public toastController: ToastController,
+    private denunciaService: DenunciaService
     ) { }
 
   ngOnInit() {
 
     this.formDenuncia = this.fb.group({
       nome: ['', [Validators.required]],
-      tel: ['', [Validators.required]],
+      telefone: ['', [Validators.required]],
       logradouro: ['', [Validators.required]],
       cep: ['', [Validators.required]],
       bairro: ['', [Validators.required]],
@@ -37,7 +39,7 @@ export class DenunciarComponent implements OnInit {
   }
 
   updateWithTelMask(event) {
-    this.formDenuncia.controls.tel.setValue(this.telPipe.transform(event.currentTarget.value));
+    this.formDenuncia.controls.telefone.setValue(this.telPipe.transform(event.currentTarget.value));
   }
 
   updateWithCepMask(event) {
@@ -47,11 +49,19 @@ export class DenunciarComponent implements OnInit {
   formSubmit() {
     if(this.formDenuncia.valid){
 
-      console.log(this.formDenuncia.value);
+      
 
-      this.presentToast();
+      this.denunciaService.postDenuncia(this.formDenuncia.value).subscribe(data => {
+        
+        console.log("FORM VALUES", this.formDenuncia.value);
+        console.log("RETORNO", data);
+        
+        
+        this.presentToast();
+        
+        this.formDenuncia.reset();
 
-      this.formDenuncia.reset();
+      })
     }else {
       this.presentAlert();
     }

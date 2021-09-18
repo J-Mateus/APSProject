@@ -35,4 +35,13 @@ export class DenunciaService extends BaseService {
         );
     }
 
+    postDenuncia(denuncia):Observable<any> {
+        return from(this.headerJsonToken())
+        .pipe(
+			mergeMap(options => {
+				return this.http.post<any>(`${this.urlApi}denuncias/`, denuncia, options)
+			 })
+        );
+    }
+
 }
