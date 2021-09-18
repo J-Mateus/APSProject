@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { MenuController } from '@ionic/angular';
+import { LocalStorage } from './utils/localStorage';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,9 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit  {
+
+  private localStorage = new LocalStorage();
+
   public appPages = [
     { title: 'Home', url: '/home', icon: 'home' },
     { title: 'Denunciar', url: '/denunciar', icon: 'alert' },
@@ -28,8 +32,10 @@ export class AppComponent implements OnInit  {
     })
   }
 
-  exit() {
-    this.router.navigate(['/login'])
+  exit() {  
+    this.localStorage.removeUsuario().then(() => {
+      this.router.navigate(['/login'])
+    })
   }
 
 
