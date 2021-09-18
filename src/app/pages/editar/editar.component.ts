@@ -66,7 +66,13 @@ export class EditarComponent implements OnInit {
 
   formSubmit() {
     if(this.formEdit.valid){
-      this.presentToast();
+
+      this.denunciaService.putDenuncia(this.denuncia.id_denuncias, this.formEdit.value).subscribe(data => {
+        console.log("DATA", data);
+        
+        this.presentToast();
+      })
+
     }else {
       this.presentAlert();
     }

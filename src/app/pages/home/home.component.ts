@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastController } from '@ionic/angular';
+import { ToastController, ViewWillEnter } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Denuncia } from 'src/app/models/denuncia';
@@ -10,19 +10,18 @@ import { DenunciaService } from 'src/app/services/denuncia.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, ViewWillEnter {
 
   denuncias: Denuncia[];
   hasDenuncia: boolean;
   
-
   constructor(private denunciaService: DenunciaService, public toastController: ToastController) { }
 
-  ngOnInit() {
-
+  ionViewWillEnter(): void {
     this.getDenuncias();
-
   }
+
+  ngOnInit() { }
 
   apagarDenuncia(id) {
     this.denunciaService.deleteDenuncia(id).subscribe(data => {

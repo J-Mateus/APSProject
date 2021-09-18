@@ -38,6 +38,25 @@ export class DenunciaService extends BaseService {
         );
     }
 
+    postDenuncia(denuncia):Observable<any> {
+        return from(this.headerJsonToken())
+        .pipe(
+            mergeMap(options => {
+                return this.http.post<any>(`${this.urlApi}denuncias/`, denuncia, options)
+             })
+        );
+    }
+
+    putDenuncia(id, denuncia):Observable<any> {
+        return from(this.headerJsonToken())
+        .pipe(
+            mergeMap(options => {
+                return this.http.patch<any>(`${this.urlApi}denuncias/${id}`, denuncia, options)
+             })
+        );
+    }
+
+
 
     deleteDenuncia(id):Observable<any> {
         return from(this.headerJsonToken())
@@ -47,14 +66,4 @@ export class DenunciaService extends BaseService {
                 })
             );
     }
-
-    postDenuncia(denuncia):Observable<any> {
-        return from(this.headerJsonToken())
-        .pipe(
-			mergeMap(options => {
-				return this.http.post<any>(`${this.urlApi}denuncias/`, denuncia, options)
-			 })
-        );
-    }
-
 }
