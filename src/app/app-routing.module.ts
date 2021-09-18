@@ -6,6 +6,7 @@ import { HomeComponent } from './pages/home/home.component';
 
 import { LoginComponent } from './pages/login/login.component';
 import { SobreComponent } from './pages/sobre/sobre.component';
+import { DenunciaResolve } from './services/denuncia.resolve';
 
 const routes: Routes = [
   {
@@ -31,7 +32,10 @@ const routes: Routes = [
   },
   {
     path: 'editar/:id',
-    component: EditarComponent
+    component: EditarComponent,
+    resolve: {
+      denuncia: DenunciaResolve
+    }
   }
 ];
 

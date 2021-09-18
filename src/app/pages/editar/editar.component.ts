@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
 import { Denuncia } from 'src/app/models/denuncia';
 import { CepMaskPipe } from 'src/app/pipes/cep-mask.pipe';
 import { TelMaskPipe } from 'src/app/pipes/tel-mask.pipe';
+import { DenunciaService } from 'src/app/services/denuncia.service';
 
 @Component({
   selector: 'app-editar',
@@ -15,18 +16,7 @@ export class EditarComponent implements OnInit {
 
   formEdit: FormGroup;
 
-  card: Denuncia = 
-    {
-      id_denuncias: 1,
-      nome: "Pessoa",
-      telefone: "(11) 3485-8842",
-      logradouro: "Av. dos Autonomistas",
-      cep: "32548-884",
-      bairro: "Centro",
-      cidade: "Osasco",
-      uf: "SP",
-      descricao: "Lixo acumulado na calçada próximo ao Habibs."
-    }
+  denuncia: Denuncia;
   
 
   constructor(
@@ -35,7 +25,13 @@ export class EditarComponent implements OnInit {
     private cepPipe: CepMaskPipe,
     public alertController: AlertController,
     public toastController: ToastController,
-    private router: Router) { }
+    private router: Router,
+    private route: ActivatedRoute,
+    private denunciaService: DenunciaService) { 
+
+      this.denuncia = this.route.snapshot.data['denuncia'];
+
+    }
 
   ngOnInit() {
 
@@ -57,14 +53,14 @@ export class EditarComponent implements OnInit {
   preencherForm() {
 
     this.formEdit.patchValue({
-      nome: this.card.nome,
-      tel: this.card.telefone,
-      logradouro: this.card.logradouro,
-      cep: this.card.cep,
-      bairro: this.card.bairro,
-      cidade: this.card.cidade,
-      uf: this.card.uf,
-      descricao: this.card.descricao
+      nome: this.denuncia.nome,
+      telefone: this.denuncia.telefone,
+      logradouro: this.denuncia.logradouro,
+      cep: this.denuncia.cep,
+      bairro: this.denuncia.bairro,
+      cidade: this.denuncia.cidade,
+      uf: this.denuncia.uf,
+      descricao: this.denuncia.descricao
     });
   }
 

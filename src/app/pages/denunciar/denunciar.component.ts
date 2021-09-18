@@ -49,18 +49,10 @@ export class DenunciarComponent implements OnInit {
   formSubmit() {
     if(this.formDenuncia.valid){
 
-      
-
-      this.denunciaService.postDenuncia(this.formDenuncia.value).subscribe(data => {
-        
-        console.log("FORM VALUES", this.formDenuncia.value);
-        console.log("RETORNO", data);
-        
-        
+      this.denunciaService.postDenuncia(this.formDenuncia.value).subscribe(data => {      
         this.presentToast();
-        
-        this.formDenuncia.reset();
 
+        this.formDenuncia.reset();
       })
     }else {
       this.presentAlert();
