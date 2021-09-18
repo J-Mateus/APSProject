@@ -1,31 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
-import { Usuario } from 'src/app/models/usuario';
+import { AlertController, ToastController } from '@ionic/angular';
+import { noop } from 'rxjs';
 import { LoginService } from 'src/app/services/login.service';
 import { LocalStorage } from 'src/app/utils/localStorage';
 
-
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  selector: 'app-cadastro',
+  templateUrl: './cadastro.component.html',
+  styleUrls: ['./cadastro.component.scss'],
 })
-export class LoginComponent implements OnInit {
-  
-  formLogin: FormGroup;
+export class CadastroComponent implements OnInit {
+
+  formCadastro: FormGroup;
   localStorage = new LocalStorage();
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     public alertController: AlertController,
+    public toastController: ToastController,
     private loginService: LoginService) { }
 
   ngOnInit() {
 
-    this.formLogin = this.fb.group({
+    this.formCadastro = this.fb.group({
+      nome: ['', [Validators.required]],
       email: ['', [Validators.required]],
       senha: ['', Validators.required]
     });
@@ -33,26 +34,16 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-    if(this.formLogin.valid){
-      
-      this.loginService.login(this.formLogin.value).subscribe(data => {
-
-        const user: Usuario = data;
-        
-        this.localStorage.setUsuario(user);
-
-        this.router.navigate(['/home']);
-        this.formLogin.reset();
+    if(this.formCadastro.valid){
+      this.loginService.cadastro(this.formCadastro.value).subscribe(data => {
+        this.presentToast()
       },
-        err => {
-          err.status === 401 ? this.presentAlert("Usuário ou senha inválidos!!") : this.presentAlert(err.error.mensagem)
-        }
+        noop
       )     
     }else {
       this.presentAlert('Por favor, preencha os campos corretamente.');
     }   
   }
-
 
   async presentAlert(msg) {
     const alert = await this.alertController.create({
@@ -65,4 +56,23 @@ export class LoginComponent implements OnInit {
     const { role } = await alert.onDidDismiss();
     console.log('onDidDismiss resolved with role', role);
   }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Usuário cadastrado.',
+      color: "success",
+      duration: 2000,
+      position: 'top',
+      animated: true
+    });
+    toast.present();
+
+    toast.onDidDismiss().then(data => {
+      
+      this.formCadastro.reset();
+      this.router.navigate(['/login']);
+    })
+    
+  }
+
 }

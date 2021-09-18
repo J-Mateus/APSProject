@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { DenunciarComponent } from './pages/denunciar/denunciar.component';
 import { EditarComponent } from './pages/editar/editar.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'cadastro',
+    component: CadastroComponent
   },
   {
     path: 'sobre',

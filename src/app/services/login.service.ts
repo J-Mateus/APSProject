@@ -21,4 +21,13 @@ export class LoginService extends BaseService {
                 })
             )
     }
+
+    cadastro(cred): Observable<Usuario> {
+        return  this.http.post<Usuario>(`${this.urlApi}usuarios/cadastro`, cred, this.ObterHeaderJson())
+            .pipe(
+                catchError(err => {
+                    throw err
+                })
+            )
+    }
 }

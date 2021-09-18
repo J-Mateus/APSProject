@@ -27,7 +27,7 @@ export class AppComponent implements OnInit  {
     private menuCtrl: MenuController) { }
 
   ngOnInit(): void { 
-    this.authService.loginPage().subscribe(data => {      
+    this.authService.menuController().subscribe(data => {      
         this.menuCtrl.enable(data, 'main-menu');
     })
   }

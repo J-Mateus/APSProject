@@ -16,11 +16,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TelMaskPipe } from './pipes/tel-mask.pipe';
 import { CepMaskPipe } from './pipes/cep-mask.pipe'
 import { EditarComponent } from './pages/editar/editar.component';
+import { CadastroComponent } from './pages/cadastro/cadastro.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    CadastroComponent,
     LoginComponent,
     SobreComponent,
     DenunciarComponent,

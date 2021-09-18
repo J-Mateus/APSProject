@@ -10,11 +10,11 @@ export class AuthService {
 
   constructor(private router: Router) { }
 
-  loginPage(): Observable<any> {
+  menuController(): Observable<any> {
     return this.router.events.pipe(
         filter(e => e instanceof NavigationEnd),
         map((route: NavigationEnd) => {         
-          return route.url === '/login' || route.urlAfterRedirects === '/login' ? false : true;  
+          return route.url === '/login' || route.urlAfterRedirects === '/login' || route.url === '/cadastro' || route.urlAfterRedirects === '/cadastro' ? false : true;  
         })
     );
   };

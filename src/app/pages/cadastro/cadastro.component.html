@@ -1,0 +1,28 @@
+<div class="login__header"></div>
+
+<div class="login__logo-box">
+  
+</div>
+
+<form class="login__form" [formGroup]="formCadastro">
+
+  <ion-item class="login__input-box">
+    <ion-label position="floating">Nome:</ion-label>
+    <ion-input type="text"  formControlName="nome"></ion-input>
+  </ion-item>
+
+  <ion-item class="login__input-box">
+    <ion-label position="floating">Email:</ion-label>
+    <ion-input formControlName="email"></ion-input>
+  </ion-item>
+
+  <ion-item class="login__input-box">
+    <ion-label position="floating">Senha:</ion-label>
+    <ion-input type="password"  formControlName="senha"></ion-input>
+  </ion-item>
+
+  <div class="login__btn-box">
+    <ion-button routerDirection="root" [routerLink]="['/login']" class="login__btn" color="secondary">Voltar</ion-button>
+    <ion-button (click)="submit()" class="login__btn" color="primary">Cadastrar</ion-button>
+  </div>
+</form>

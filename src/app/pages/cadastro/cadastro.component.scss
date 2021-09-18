@@ -44,14 +44,13 @@
         
     }
 
-    &__cadastro {
-        color: var(--ion-color-primary);
-        margin-top: 5px;
-        align-self: flex-start;
+
+    &__btn-box {
+        display: flex;
+        margin-top: 10px;
     }
 
     &__btn {
-        margin-top: 10%;
         width: 50%;
         height: 50px;
     }

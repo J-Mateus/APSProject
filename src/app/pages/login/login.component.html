@@ -15,5 +15,7 @@
     <ion-input type="password"  formControlName="senha"></ion-input>
   </ion-item>
 
+  <small routerDirection="root" [routerLink]="['/cadastro']" class="login__cadastro">Não tem uma conta? Cadastre-se.</small>
+
   <ion-button (click)="submit()" class="login__btn" color="primary">Entrar</ion-button>
 </form>
