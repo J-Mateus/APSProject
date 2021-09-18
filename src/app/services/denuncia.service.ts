@@ -25,4 +25,14 @@ export class DenunciaService extends BaseService {
         );
     }
 
+    deleteDenuncia(id):Observable<any> {
+
+    return from(this.headerJsonToken())
+        .pipe(
+			mergeMap(options => {
+				return this.http.delete<any>(`${this.urlApi}denuncias/${id}`, options)
+			 })
+        );
+    }
+
 }
