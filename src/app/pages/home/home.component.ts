@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Denuncia } from 'src/app/models/denuncia';
+import { DenunciaService } from 'src/app/services/denuncia.service';
 
 @Component({
   selector: 'app-home',
@@ -8,23 +11,20 @@ import { Denuncia } from 'src/app/models/denuncia';
 })
 export class HomeComponent implements OnInit {
 
-  cards: Denuncia[] = [
-    {
-      id: 1,
-      nome: "Pessoa",
-      tel: "(11) 3485-8842",
-      logradouro: "Av. dos Autonomistas",
-      cep: "32548-884",
-      bairro: "Centro",
-      cidade: "Osasco",
-      uf: "SP",
-      descricao: "Lixo acumulado na calçada próximo ao Habibs."
-    }
-  ]
+  denuncias$:Observable<Denuncia[]> = this.denunciaService.getDenuncias()
 
-  constructor() { }
+  nenhumaDenuncia$:Observable<boolean>
 
-  ngOnInit() {}
+  constructor(private denunciaService: DenunciaService) { }
+
+  ngOnInit() {
+
+    this.nenhumaDenuncia$ = this.denunciaService.getDenuncias().pipe(
+      map((data: []) => {
+          return !data.length
+        })
+      )
+  }
 
   apagarDenuncia(id) {
     console.log("DELETE", id);

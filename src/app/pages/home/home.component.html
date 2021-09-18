@@ -20,12 +20,12 @@
   </div>
 
   <div class="list">
-    <!-- <span class="list__empty">Você ainda não cadastrou nenhuma denúncia, vá para aba de cadastro para adicioná-las</span> -->
+    <span *ngIf="nenhumaDenuncia$ | async" class="list__empty">Você ainda não cadastrou nenhuma denúncia, vá para aba de cadastro para adicioná-las</span>
 
-    <ion-card class="card" *ngFor="let card of cards">    
+    <ion-card class="card" *ngFor="let card of denuncias$ | async">    
       <ion-card-content>
         <p><strong>Nome:</strong> {{ card.nome }}</p>
-        <p><strong>Tel:</strong> {{ card.tel }}</p>
+        <p><strong>Tel:</strong> {{ card.telefone }}</p>
         <p><strong>Logradouro:</strong> {{ card.logradouro }}</p>
         <p><strong>Bairro:</strong> {{ card.bairro }}</p>
         <p><strong>CEP:</strong> {{ card.cep }}</p>
@@ -34,8 +34,8 @@
         <p><strong>Descrição:</strong> {{ card.descricao }}</p>
         
         <div class="btn-box">
-          <ion-button (click)="apagarDenuncia(card.id)" color="danger">Exluir</ion-button>
-          <ion-button routerLink="/editar/{{ card.id }}" color="warning">Editar</ion-button>
+          <ion-button (click)="apagarDenuncia(card.id_denuncias)" color="danger">Exluir</ion-button>
+          <ion-button routerLink="/editar/{{ card.id_denuncias }}" color="warning">Editar</ion-button>
         </div>
       </ion-card-content>
     </ion-card>

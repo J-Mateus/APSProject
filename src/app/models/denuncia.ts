@@ -1,7 +1,7 @@
 export interface Denuncia {
-    id: number;
+    id_denuncias: number;
     nome: string;
-    tel: string;
+    telefone: string;
     logradouro: string;
     cep: string;
     bairro: string;

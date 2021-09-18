@@ -17,9 +17,9 @@ export class EditarComponent implements OnInit {
 
   card: Denuncia = 
     {
-      id: 1,
+      id_denuncias: 1,
       nome: "Pessoa",
-      tel: "(11) 3485-8842",
+      telefone: "(11) 3485-8842",
       logradouro: "Av. dos Autonomistas",
       cep: "32548-884",
       bairro: "Centro",
@@ -41,7 +41,7 @@ export class EditarComponent implements OnInit {
 
     this.formEdit = this.fb.group({
       nome: ['', [Validators.required]],
-      tel: ['', [Validators.required]],
+      telefone: ['', [Validators.required]],
       logradouro: ['', [Validators.required]],
       cep: ['', [Validators.required]],
       bairro: ['', [Validators.required]],
@@ -58,7 +58,7 @@ export class EditarComponent implements OnInit {
 
     this.formEdit.patchValue({
       nome: this.card.nome,
-      tel: this.card.tel,
+      tel: this.card.telefone,
       logradouro: this.card.logradouro,
       cep: this.card.cep,
       bairro: this.card.bairro,
