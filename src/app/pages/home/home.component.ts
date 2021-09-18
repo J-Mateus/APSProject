@@ -13,8 +13,8 @@ import { DenunciaService } from 'src/app/services/denuncia.service';
 export class HomeComponent implements OnInit {
 
   denuncias: Denuncia[];
-
-  nenhumaDenuncia$:Observable<boolean>
+  hasDenuncia: boolean;
+  
 
   constructor(private denunciaService: DenunciaService, public toastController: ToastController) { }
 
@@ -22,11 +22,6 @@ export class HomeComponent implements OnInit {
 
     this.getDenuncias();
 
-    this.nenhumaDenuncia$ = this.denunciaService.getDenuncias().pipe(
-      map((data: []) => {
-          return !data.length
-        })
-      )
   }
 
   apagarDenuncia(id) {
@@ -38,7 +33,8 @@ export class HomeComponent implements OnInit {
 
   getDenuncias() {
     this.denunciaService.getDenuncias().subscribe((denuncias) => {
-      this.denuncias = denuncias
+      this.denuncias = denuncias;
+      this.hasDenuncia = !!denuncias.length;
     })
   }
 

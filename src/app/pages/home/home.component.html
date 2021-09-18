@@ -20,7 +20,7 @@
   </div>
 
   <div class="list">
-    <span *ngIf="nenhumaDenuncia$ | async" class="list__empty">Você ainda não cadastrou nenhuma denúncia, vá para aba de cadastro para adicioná-las</span>
+    <span *ngIf="!hasDenuncia" class="list__empty">Você ainda não cadastrou nenhuma denúncia, vá para aba de cadastro para adicioná-las</span>
 
     <ion-card class="card" *ngFor="let card of denuncias">    
       <ion-card-content>
