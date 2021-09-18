@@ -7,8 +7,8 @@
         height: 25vh;
         background-image: linear-gradient(
             to right bottom,
-            rgba(var(--ion-color-primary-tint-rgb), 0.3),
-            rgba(var(--ion-color-primary-shade-rgb), 0.3)),
+            rgba(var(--ion-color-primary-tint-rgb), 0.1),
+            rgba(var(--ion-color-primary-shade-rgb), 0.1)),
             url(../../../assets/img/login-img.jpg);
         background-size: cover;
         background-position: bottom;
@@ -17,11 +17,24 @@
 
     &__logo-box {
         height: 10%;
-        width: 50%;
+        display: flex;
+        width: 70%;
         margin: 15% auto;
-        border: 2px solid var(--ion-color-primary);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
+    &__text {
+        font-size: 1.7rem;
+        font-family: 'Quicksand', sans-serif;
+
+        &--bold {
+            font-weight: 700;
+            font-size: 2.7rem;
+            color: var(--ion-color-primary);
+        }
+    }
 
     &__form {
         width: 80%;
