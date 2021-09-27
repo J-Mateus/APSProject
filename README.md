@@ -2,7 +2,17 @@
 Trabalho (Mobile) do 8º Semestre de Ciência da Computação.
 
 ## Descrição
-Estamos desenvolvendo um aplicativo mobile, onde o usuário possa denunciar locais públicos com acúmulo de lixo.
+
+<div style="text-align: center">
+    <img src="./src/assets/img/login.jpg" alt="login screen" height="340px">
+    <img src="./src/assets/img/home.jpg" alt="login screen" height="340px" style="margin: 0 15px">
+    <img src="./src/assets/img/editar.jpg" alt="login screen" height="340px">
+</div>
+
+Estamos desenvolvendo um aplicativo mobile chamado City Clean, onde o usuário pode denunciar locais públicos com acúmulo de lixo. <br>
+Sabemos que o acúmulo de lixo em locais públicos podem causar diversos problemas, como inundações, animais portadores de doenças e mau cheiro. Para reduzirmos
+esses inconvenientes podemos realizar denúncias através do app **City Clean**, onde o usuário poderá fornecer o endereço e uma descrição do problema, esses dados
+serão armazenados em nosso banco para que as autoridades responsáveis possam visualizar e corrigir esses impasses.
 
 ## Clonando o projeto ヽ(✿ﾟ▽ﾟ)ノ
 Antes de tudo certifique-se que você possui em sua máquina todas as ferramentas necessárias para executar a aplicação, se preferir
@@ -26,5 +36,7 @@ Execute os seguintes comandos:
 7. O APK será criado na pasta "android/app/build/outputs/debug/app-debug.apk".
 
 ## Atualizações
-Conforme fomos adicionando mais conteúdo ao projeto irei atualizar esse repositório, ainda há muita coisa a ser feita.
-Até mais!!!
+- v1.0 Conforme fomos adicionando mais conteúdo ao projeto irei atualizar esse repositório, ainda há muita coisa a ser feita.
+- v2.0 O MVP está completo!! O aplicativo já está interagindo com o [back-end](https://github.com/J-Mateus/aps-api).
+
+Em breve mais novidades. Até mais!! （。＾▽＾）
